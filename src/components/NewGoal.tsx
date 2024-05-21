@@ -1,16 +1,18 @@
-import { type FormEvent } from 'react';
+import { type FormEvent, useRef } from 'react';
 
-type Props = {};
+export default function NewGoal() {
+  // initially these are undefined so we need to always set the ref to "null"
+  // so we have no connection on a specific value but we will get the value eventually
+  const goal = useRef<HTMLInputElement>(null);
+  const summary = useRef<HTMLInputElement>(null);
 
-export default function NewGoal({}: Props) {
-  // this is available due to the tsconfig.json file the "lib" setting which is pretty sweet
-  // this makes Typescript know which base types should be available to us
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    // let's prevent the browser default
     event.preventDefault();
-
-    // this is built into the browser
-    new FormData(event.currentTarget);
+    // listen here Typescript it will never be null "you must be certain though"
+    // the app will crash if you are wrong on an assumption
+    // with the HTMLInputELement we get all the availabl options by removing value and seeing the wonderful intellisense we are given
+    const enteredGoal = goal.current!.value;
+    const enteredSummary = goal.current!.value;
   }
 
   return (
@@ -20,12 +22,13 @@ export default function NewGoal({}: Props) {
         <input
           id='goal'
           type='text'
-          name='goal'
+          ref={goal}
         />
         <label htmlFor='summary'>Task info</label>
         <input
           id='summary'
           type='text'
+          ref={summary}
         />
       </p>
       <p>
