@@ -1,11 +1,11 @@
 import CourseGoal from './CourseGoal';
+// using an alias is a great way to resolve name space collisions
+import { type CourseGoal as CGoal } from '../App.tsx';
 
-type CourseGoalListProps = {
-  goals: {
-    title: string;
-    description: string;
-    id: number;
-  }[];
+// when using Typescript this is super cool as we can export types
+export type CourseGoalListProps = {
+  // we make sure that this is type of an array
+  goals: CGoal[];
 };
 
 export default function CourseGoalList({ goals }: CourseGoalListProps) {

@@ -3,7 +3,8 @@ import CourseGoalList from './components/CourseGoalList.tsx';
 import goalsImg from './assets/goals.jpg';
 import { useState } from 'react';
 
-type CourseGoal = {
+// so the more streamlined approach is to define this once and use it where needed
+export type CourseGoal = {
   title: string;
   description: string;
   id: number;
