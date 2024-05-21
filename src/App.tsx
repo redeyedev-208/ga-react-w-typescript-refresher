@@ -1,5 +1,6 @@
 import Header from './components/Header.tsx';
 import CourseGoalList from './components/CourseGoalList.tsx';
+import NewGoal from './components/NewGoal.tsx';
 import goalsImg from './assets/goals.jpg';
 import { useState } from 'react';
 
@@ -34,7 +35,7 @@ export default function App() {
       <Header image={{ src: goalsImg, alt: 'A list of goals' }}>
         <h1>Daily Task Reminder</h1>
       </Header>
-      <button onClick={handleAddGoal}>Add New Task</button>
+      <NewGoal />
       <CourseGoalList
         goals={goals}
         onDeleteGoal={handleDeleteGoal}
