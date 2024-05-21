@@ -16,18 +16,32 @@ export default function App() {
   const [goals, setGoals] = useState<CourseGoal[]>([]);
 
   function handleAddGoal() {
-    setGoals(goals);
+    setGoals((prevGoals) => {
+      const newGoal: CourseGoal = {
+        id: Math.random(),
+        title: 'Relearn the cool stuff',
+        description: 'Learn it with confidence',
+      };
+      return [...prevGoals, newGoal];
+    });
   }
 
   return (
     <main>
       <Header image={{ src: goalsImg, alt: 'A list of goals' }}>
-        <h1>React & TSX Refresher</h1>
+        <h1>Daily Task Reminder</h1>
       </Header>
-      <button onClick={handleAddGoal}>Add Goal</button>
-      <CourseGoal title='React + TS Refresher'>
-        <p>Learning the cool stuff</p>
-      </CourseGoal>
+      <button onClick={handleAddGoal}>Add New Task</button>
+      {/* we are using basic semantics here which is always a great practice when not using third party libraries like MUI, Tailwind or whatever else the cool kids are using */}
+      <ul>
+        {goals.map((goal) => (
+          <li key={goal.id}>
+            <CourseGoal title={goal.title}>
+              <p>{goal.description}</p>
+            </CourseGoal>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
