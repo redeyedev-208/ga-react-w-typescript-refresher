@@ -26,7 +26,7 @@ export default function CourseGoalList({
     warningBox = (
       <InfoBox
         mode='warning'
-        severity='high'
+        severity='medium'
       >
         You have a lot of tasks, don't stretch yourself too thin...
       </InfoBox>
