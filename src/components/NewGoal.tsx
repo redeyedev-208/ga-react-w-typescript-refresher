@@ -37,7 +37,7 @@ export default function NewGoal({ onAddGoal }: NewGoalProps) {
         />
       </p>
       <p>
-        <button>Add Goal</button>
+        <button>Add Task</button>
       </p>
     </form>
   );
