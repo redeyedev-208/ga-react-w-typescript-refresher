@@ -4,12 +4,13 @@ import { type ReactNode } from 'react';
 // we are accepting a prop that accepts a literal and a union
 type InfoBoxProps = {
   mode: 'hint' | 'warning';
+  severity?: 'low' | 'medium' | 'high';
   children: ReactNode;
 };
 
 // We want to type an info but also a warning info box
 // Based on some prop (conditional rendering)
-export default function InfoBox({ mode, children }: InfoBoxProps) {
+export default function InfoBox({ mode, severity, children }: InfoBoxProps) {
   if (mode === 'hint') {
     return (
       <aside className='infobox infobox-hint'>
@@ -18,7 +19,7 @@ export default function InfoBox({ mode, children }: InfoBoxProps) {
     );
   }
   return (
-    <aside className='infobox infobox-warning warning--medium'>
+    <aside className={`infobox infobox-warning warning--${severity}`}>
       <h2>Warning</h2>
       <p>{children}</p>
     </aside>
